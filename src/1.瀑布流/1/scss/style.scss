@@ -1,0 +1,31 @@
+@mixin flex-center($mode: 1){
+    display: flex;
+    align-items: center;
+    
+    @if $mode == 1{
+        justify-content: center;
+    }@else if $mode == 2{
+        justify-content: flex-start;;
+        flex-direction: column;
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+
+    @include flex-center(1);
+}
+
+#box1{
+    width: 80%;
+    height: 200px;
+
+    background-color: black;
+}
