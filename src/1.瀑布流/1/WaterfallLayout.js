@@ -7,17 +7,20 @@ export class WaterfallLayout{
             columnWidth: args.columnWidth,
             gap: args.gap
         }
-        this.selector = selector;
-        this.mainElem = this.getMainElem();
-        this.columnCount = this.getColumnCount();
+
+        // 初始化参数
+        this.selector = selector;                   // 主元素選擇器
+        this.mainElem = this.getMainElem();         // 主元素
+        this.columnCount = this.getColumnCount();   // 列数
+
+        console.log(this.columnCount)
 
         this.monitor();
     }
 
     monitor(){
         window.addEventListener('resize', () => {
-            this.columnCount = this.getColumnCount();
-            console.log(this.columnCount);
+            
         });
     }
 
