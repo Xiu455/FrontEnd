@@ -25,7 +25,21 @@ body{
 
 #box1{
     width: 80%;
-    height: 200px;
+    height: max-content;
 
-    background-color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+.data_box{
+    width: 100%;
+    height: max-content;
+    background-color: #00b7ff;
+
+    @include flex-center(2);
+
+    img{
+        width: 100%;
+        height: auto; max-height: 500px;
+        object-fit: cover;
+    }
 }

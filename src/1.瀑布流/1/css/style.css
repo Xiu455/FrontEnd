@@ -14,6 +14,22 @@ body {
 
 #box1 {
   width: 80%;
-  height: 200px;
-  background-color: black;
+  height: max-content;
+  background-color: white;
+}
+
+.data_box {
+  width: 100%;
+  height: max-content;
+  background-color: #00b7ff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.data_box img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
 }
