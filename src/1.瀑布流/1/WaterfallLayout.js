@@ -117,6 +117,9 @@ export class WaterfallLayout{
             }
         });
 
-        mainColumn.elem.innerHTML += html;
+        let range = document.createRange();
+        let dom = range.createContextualFragment(html);
+
+        mainColumn.elem.appendChild(dom);
     }
 }
