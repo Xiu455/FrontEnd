@@ -110,8 +110,17 @@ export class WaterfallLayout{
 
     // 布局
     async layout(){
+        // 紀錄當前滾動位置
+        const scrollPosition = window.scrollY;
+
         // 等待圖片加載完成
         await this.waitImgLoad();
+
+        // 回到原先位置
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'instant' // 使用 'instant' 避免平滑滾動效果
+        });
 
         // 開始插入元素
         for(let dom of this.doms){
@@ -150,10 +159,11 @@ export class WaterfallLayout{
 
     // 等待doms中的圖片加載完成
     waitImgLoad(){return new Promise(resolve => {
-        let contentCount = this.doms.length;
-        let loadedCount = 0;
+        let contentCount = this.doms.length;    // 預計加載數量
+        let loadedCount = 0;                    // 已加載數量
 
-        const checkComplete = () => { loadedCount === contentCount ? resolve() : null; }
+        // 監視加載狀態
+        const checkComplete = () => { loadedCount === contentCount ? resolve(true) : null; }
 
         this.doms.forEach(dom => {
             const img = dom.querySelector('img');
