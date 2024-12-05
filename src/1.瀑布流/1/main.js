@@ -60,7 +60,7 @@ import { WaterfallLayout } from './WaterfallLayout.js';
 
     await waterfall.layout();
 
-    await delay(1000);
+    await delay(5000);
 
     for(let data of datas2){
         waterfall.addContent(convertHTML(data));

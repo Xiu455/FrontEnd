@@ -116,16 +116,16 @@ export class WaterfallLayout{
         // 等待圖片加載完成
         await this.waitImgLoad();
 
+        // 開始插入元素
+        for(let dom of this.doms){
+            this.insertElem(dom);
+        }
+
         // 回到原先位置
         window.scrollTo({
             top: scrollPosition,
             behavior: 'instant' // 使用 'instant' 避免平滑滾動效果
         });
-
-        // 開始插入元素
-        for(let dom of this.doms){
-            this.insertElem(dom);
-        }
     }
 
     // 插入內容元素
