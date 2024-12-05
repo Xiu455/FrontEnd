@@ -16,22 +16,17 @@ export class WaterfallLayout{
         this.mainElem = this.getMainElem();         // 主元素
         this.columnCount = this.getColumnCount();   // 列数
         this.columnIndex = 0;                       // 已布局列數
+        this.domsIndex = 0;                         // 已插入元素索引
 
         this.init();
     }
 
-    /**
-     * 獲得主元素
-     * @returns {Element} 主元素
-     */
+    // 獲得主元素
     getMainElem(){
         return document.querySelector(this.selector);
     }
 
-    /**
-     * 獲得列數
-     * @returns {number} 列數
-     */
+    // 獲得列數
     getColumnCount(){
         return Math.floor(this.mainElem.offsetWidth / (this.param.columnWidth + this.param.gap));
     }
@@ -84,6 +79,7 @@ export class WaterfallLayout{
             if(this.columnIndex === this.columnCount) return;
 
             // 柱子數量發生變動
+            this.domsIndex = 0;
             this.columnlayout();
             this.layout();
         });
@@ -116,10 +112,14 @@ export class WaterfallLayout{
         // 等待圖片加載完成
         await this.waitImgLoad();
 
+        let tmpDoms = this.doms.slice(this.domsIndex, this.doms.length);
+
         // 開始插入元素
-        for(let dom of this.doms){
+        for(let dom of tmpDoms){
             this.insertElem(dom);
         }
+
+        this.domsIndex = this.doms.length;
 
         // 回到原先位置
         window.scrollTo({
@@ -171,10 +171,12 @@ export class WaterfallLayout{
             if(img === null || img.complete){ 
                 loadedCount++;
                 checkComplete();
+                // console.log(`已加載 ${loadedCount} / ${contentCount}`);
             }else{
                 img.onload = () => { 
                     loadedCount++; 
                     checkComplete();
+                    // console.log(`已加載 ${loadedCount} / ${contentCount}`);
                 };
                 img.onerror = () => { 
                     loadedCount++; 

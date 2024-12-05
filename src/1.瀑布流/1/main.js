@@ -60,11 +60,19 @@ import { WaterfallLayout } from './WaterfallLayout.js';
 
     await waterfall.layout();
 
-    await delay(5000);
+    // 開始計時
+    // console.log('開始計時');
+    // console.time('layout');
+
+    await delay(1000);
 
     for(let data of datas2){
         waterfall.addContent(convertHTML(data));
     }
 
-    waterfall.layout();
+    await waterfall.layout();
+
+    // 結束計時
+    // console.timeEnd('layout');
+    // console.log('結束計時');
 })();
