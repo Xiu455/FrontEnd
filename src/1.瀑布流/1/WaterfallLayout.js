@@ -85,7 +85,7 @@ export class WaterfallLayout{
 
             // 柱子數量發生變動
             this.columnlayout();
-            this.relayout();
+            this.layout();
         });
     }
 
@@ -102,36 +102,32 @@ export class WaterfallLayout{
         this.columnIndex = this.columnCount;
     }
 
-    // HTML字串轉DOM
-    htmlToDom(html){
-        let tmpDom = document.createElement('div');
-        tmpDom.innerHTML = html;
-        return tmpDom.querySelector('& > *');
-    }
-
     // 新增內容元素
     async addContent(html){
         let dom = this.htmlToDom(html);
         this.doms.push(dom);
-        await this.insertElem(dom);
     }
 
-    // 重新布局
-    async relayout(){
+    // 布局
+    async layout(){
+        // 等待圖片加載完成
+        await this.waitImgLoad();
+
+        // 開始插入元素
         for(let dom of this.doms){
-            await this.insertElem(dom);
+            this.insertElem(dom);
         }
     }
 
-    async insertElem(dom){
-        let columnElems = this.mainElem.querySelectorAll('& > .itemColumn');
-
+    // 插入內容元素
+    insertElem(dom){
         let mainColumn = {
             h: 0,
             elem: null
         };
 
-        columnElems.forEach((e) => {
+        // 找出最短的列
+        this.mainElem.querySelectorAll('& > .itemColumn').forEach((e) => {
             if(mainColumn.elem === null){
                 mainColumn = {h: e.offsetHeight, elem: e}
             }
@@ -141,17 +137,40 @@ export class WaterfallLayout{
             }
         });
 
+        // 插入元素
         mainColumn.elem.appendChild(dom);
+    }
 
-        await new Promise(resolve => {
+    // HTML字串轉DOM
+    htmlToDom(html){
+        let tmpDom = document.createElement('div');
+        tmpDom.innerHTML = html;
+        return tmpDom.querySelector('& > *');
+    }
+
+    // 等待doms中的圖片加載完成
+    waitImgLoad(){return new Promise(resolve => {
+        let contentCount = this.doms.length;
+        let loadedCount = 0;
+
+        const checkComplete = () => { loadedCount === contentCount ? resolve() : null; }
+
+        this.doms.forEach(dom => {
             const img = dom.querySelector('img');
-            if(img.complete){
-                resolve();
+
+            if(img === null || img.complete){ 
+                loadedCount++;
+                checkComplete();
             }else{
-                img.onload = () => {
-                    resolve();
+                img.onload = () => { 
+                    loadedCount++; 
+                    checkComplete();
+                };
+                img.onerror = () => { 
+                    loadedCount++; 
+                    checkComplete();
                 };
             }
         });
-    }
+    });}
 }

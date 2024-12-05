@@ -42,6 +42,8 @@ import { WaterfallLayout } from './WaterfallLayout.js';
     ];
 
     for(let data of datas){
-        await waterfall.addContent(convertHTML(data));
+        waterfall.addContent(convertHTML(data));
     }
+
+    waterfall.layout();
 })();
