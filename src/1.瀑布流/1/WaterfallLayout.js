@@ -10,7 +10,7 @@ export class WaterfallLayout{
 
         // 初始化参数
         this.CSS_id = 'waterfall-layout-style-aB3dEf7G';
-        this.htmlContainer = [];
+        this.doms = [];
 
         this.selector = selector;                   // 主元素選擇器
         this.mainElem = this.getMainElem();         // 主元素
@@ -81,13 +81,16 @@ export class WaterfallLayout{
     monitor(){
         window.addEventListener('resize', () => {
             this.columnCount = this.getColumnCount();
+            if(this.columnIndex === this.columnCount) return;
+
+            // 柱子數量發生變動
             this.columnlayout();
+            this.relayout();
         });
     }
 
+    // 瀑布流柱子布局
     columnlayout(){
-        if(this.columnIndex === this.columnCount) return;
-
         this.mainElem.innerHTML = '';
 
         for(let i = 0; i < this.columnCount; i++){
@@ -99,7 +102,28 @@ export class WaterfallLayout{
         this.columnIndex = this.columnCount;
     }
 
-    insertElem(html){
+    // HTML字串轉DOM
+    htmlToDom(html){
+        let tmpDom = document.createElement('div');
+        tmpDom.innerHTML = html;
+        return tmpDom.querySelector('& > *');
+    }
+
+    // 新增內容元素
+    async addContent(html){
+        let dom = this.htmlToDom(html);
+        this.doms.push(dom);
+        await this.insertElem(dom);
+    }
+
+    // 重新布局
+    async relayout(){
+        for(let dom of this.doms){
+            await this.insertElem(dom);
+        }
+    }
+
+    async insertElem(dom){
         let columnElems = this.mainElem.querySelectorAll('& > .itemColumn');
 
         let mainColumn = {
@@ -117,9 +141,17 @@ export class WaterfallLayout{
             }
         });
 
-        let range = document.createRange();
-        let dom = range.createContextualFragment(html);
-
         mainColumn.elem.appendChild(dom);
+
+        await new Promise(resolve => {
+            const img = dom.querySelector('img');
+            if(img.complete){
+                resolve();
+            }else{
+                img.onload = () => {
+                    resolve();
+                };
+            }
+        });
     }
 }
