@@ -107,7 +107,7 @@ export class WaterfallLayout{
     // 布局
     async layout(){
         // 紀錄當前滾動位置
-        const scrollPosition = window.scrollY;
+        let scrollPosition = window.scrollY;
 
         // 等待圖片加載完成
         await this.waitImgLoad();
