@@ -110,13 +110,13 @@ export class WaterfallLayout{
         let scrollPosition = window.scrollY;
 
         // 等待圖片加載完成
-        await this.waitImgLoad();
+        this.waitImgLoad();
 
         let tmpDoms = this.doms.slice(this.domsIndex, this.doms.length);
 
         // 開始插入元素
         for(let dom of tmpDoms){
-            this.insertElem(dom);
+            await this.insertElem(dom);
         }
 
         this.domsIndex = this.doms.length;
@@ -124,12 +124,12 @@ export class WaterfallLayout{
         // 回到原先位置
         window.scrollTo({
             top: scrollPosition,
-            behavior: 'instant' // 使用 'instant' 避免平滑滾動效果
+            behavior: 'instant' // 避免平滑滾動效果
         });
     }
 
     // 插入內容元素
-    insertElem(dom){
+    async insertElem(dom){
         let mainColumn = {
             h: 0,
             elem: null
@@ -146,6 +146,28 @@ export class WaterfallLayout{
             }
         });
 
+        await new Promise((resolve, reject) => {
+            const img = dom.querySelector('img');
+            let attempts = 0;
+
+            if(img === null || img.complete){
+                resolve();
+            }else{
+                img.onload = () => { 
+                    resolve();
+                };
+
+                img.onerror = () => { 
+                    if(attempts < 3) {
+                        img.src = img.src;
+                        attempts++;
+                    }else{
+                        reject();
+                    }
+                };
+            }
+        });
+
         // 插入元素
         mainColumn.elem.appendChild(dom);
     }
@@ -158,31 +180,42 @@ export class WaterfallLayout{
     }
 
     // 等待doms中的圖片加載完成
-    waitImgLoad(){return new Promise(resolve => {
+    waitImgLoad(){ return new Promise( resolve => {
         let contentCount = this.doms.length;    // 預計加載數量
         let loadedCount = 0;                    // 已加載數量
+        let attempts = 0;                       // 嘗試次數
 
         // 監視加載狀態
         const checkComplete = () => { loadedCount === contentCount ? resolve(true) : null; }
 
-        this.doms.forEach(dom => {
-            const img = dom.querySelector('img');
+        const loadImages = () => {
+            this.doms.forEach(dom => {
+                const img = dom.querySelector('img');
 
-            if(img === null || img.complete){ 
-                loadedCount++;
-                checkComplete();
-                // console.log(`已加載 ${loadedCount} / ${contentCount}`);
-            }else{
-                img.onload = () => { 
-                    loadedCount++; 
+                if(img === null || img.complete){ 
+                    loadedCount++;
                     checkComplete();
                     // console.log(`已加載 ${loadedCount} / ${contentCount}`);
-                };
-                img.onerror = () => { 
-                    loadedCount++; 
-                    checkComplete();
-                };
-            }
-        });
+                }else{
+                    img.onload = () => { 
+                        loadedCount++; 
+                        checkComplete();
+                        // console.log(`已加載 ${loadedCount} / ${contentCount}`);
+                    };
+
+                    img.onerror = () => {
+                        if(attempts < 3) {
+                            img.src = img.src;
+                            attempts++;
+                        } else {
+                            loadedCount++; 
+                            checkComplete();
+                        }
+                    };
+                }
+            });
+        };
+
+        loadImages();
     });}
 }

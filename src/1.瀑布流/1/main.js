@@ -64,13 +64,13 @@ import { WaterfallLayout } from './WaterfallLayout.js';
     // console.log('開始計時');
     // console.time('layout');
 
-    await delay(1000);
+    // await delay(2000);
 
-    for(let data of datas2){
-        waterfall.addContent(convertHTML(data));
-    }
+    // for(let data of datas2){
+    //     waterfall.addContent(convertHTML(data));
+    // }
 
-    await waterfall.layout();
+    // await waterfall.layout();
 
     // 結束計時
     // console.timeEnd('layout');
