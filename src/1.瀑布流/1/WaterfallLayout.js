@@ -98,36 +98,6 @@ export class WaterfallLayout{
         this.columnIndex = this.columnCount;
     }
 
-    // 新增內容元素
-    async addContent(html){
-        let dom = this.htmlToDom(html);
-        this.doms.push(dom);
-    }
-
-    // 布局
-    async layout(){
-        // 紀錄當前滾動位置
-        let scrollPosition = window.scrollY;
-
-        // 等待圖片加載完成
-        this.waitImgLoad();
-
-        let tmpDoms = this.doms.slice(this.domsIndex, this.doms.length);
-
-        // 開始插入元素
-        for(let dom of tmpDoms){
-            await this.insertElem(dom);
-        }
-
-        this.domsIndex = this.doms.length;
-
-        // 回到原先位置
-        window.scrollTo({
-            top: scrollPosition,
-            behavior: 'instant' // 避免平滑滾動效果
-        });
-    }
-
     // 插入內容元素
     async insertElem(dom){
         let mainColumn = {
@@ -218,4 +188,34 @@ export class WaterfallLayout{
 
         loadImages();
     });}
+
+    // 新增內容元素
+    async addContent(html){
+        let dom = this.htmlToDom(html);
+        this.doms.push(dom);
+    }
+
+    // 布局
+    async layout(){
+        // 紀錄當前滾動位置
+        let scrollPosition = window.scrollY;
+
+        // 等待圖片加載完成
+        this.waitImgLoad();
+
+        let tmpDoms = this.doms.slice(this.domsIndex, this.doms.length);
+
+        // 開始插入元素
+        for(let dom of tmpDoms){
+            await this.insertElem(dom);
+        }
+
+        this.domsIndex = this.doms.length;
+
+        // 回到原先位置
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'instant' // 避免平滑滾動效果
+        });
+    }
 }
