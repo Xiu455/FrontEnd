@@ -2,12 +2,14 @@
 class WaterfallLayout{
     constructor(selector, args={
         columnWidth: 200,
-        gap: 0
+        gap: 0,
+        fillMode: 'fit',
     }){
         this.param = {
             columnWidth: args.columnWidth,
             gap: args.gap,
             mainImgSelector: 'img',
+            fillMode: args.fillMode
         }
 
         // 初始化参数
@@ -62,7 +64,7 @@ class WaterfallLayout{
             ${this.selector} .itemColumn{
                 width: 100%;
                 min-width: ${this.param.columnWidth}px;
-                max-width: ${this.param.columnWidth * 1.2}px;
+                max-width: ${(this.param.fillMode === 'fill')? `100%` :  this.param.columnWidth};
                 height: max-content; min-height: 100px;
 
                 display: flex;
