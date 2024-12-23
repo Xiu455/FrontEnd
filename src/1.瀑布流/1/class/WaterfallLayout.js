@@ -32,7 +32,7 @@ class WaterfallLayout{
 
     // 獲得列數
     getColumnCount(){
-        return Math.floor(this.mainElem.offsetWidth / (this.param.columnWidth + this.param.gap));
+        return Math.max(1, Math.floor(this.mainElem.offsetWidth / (this.param.columnWidth + this.param.gap)));
     }
 
     // 初始化
