@@ -1,9 +1,8 @@
 (async () => {
     const waterfall = new WaterfallLayout('#box1',{
         columnWidth: 300,
-        gap: 20
+        gap: 20,
     });
-
 
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     

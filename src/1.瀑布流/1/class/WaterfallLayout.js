@@ -64,7 +64,7 @@ class WaterfallLayout{
             ${this.selector} .itemColumn{
                 width: 100%;
                 min-width: ${this.param.columnWidth}px;
-                max-width: ${(this.param.fillMode === 'fill')? `100%` :  this.param.columnWidth};
+                max-width: ${(this.param.fillMode === 'fill')? this.param.columnWidth*2 : this.param.columnWidth*1}px ;
                 height: max-content; min-height: 100px;
 
                 display: flex;
