@@ -21,6 +21,8 @@ class WaterfallLayout{
         this.domsIndex = 0;                         // 已插入元素索引
 
         this.init();
+
+        console.log('遠端測試');
     }
 
     // 獲得主元素
