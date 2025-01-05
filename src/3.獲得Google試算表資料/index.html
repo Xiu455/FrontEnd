@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: aliceblue;
+            font-family: "Figtree", 'Inter', sans-serif;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        body{
+            width: 100%;
+            min-height: 100vh;
+            background-color: rgb(249, 249, 249);
+            margin: 5vh 0;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container{
+            width: 80%;
+            height: max-content;
+
+            display: grid;
+            justify-content: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+            grid-gap: 20px;
+        }
+
+        .item{
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            background-color: rgb(0, 0, 0);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+            border-radius: 10px;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+
+            position: relative;
+
+            & img{
+                width: 100%; max-width: 100%;
+                height: 100%; max-height: 100%;
+                object-fit: cover;
+                position: absolute;
+                inset: 0;
+            }
+
+            .info{
+                width: 100%;
+                aspect-ratio: 2 / 1;
+                background-color: rgba(0, 0, 0, .5);
+                backdrop-filter: blur(3px);
+
+                margin-top: auto;
+
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-direction: column;
+
+                z-index: 2;
+
+                .name_age{
+                    width: 100%;
+                    height: max-content;
+
+                    padding: 10px 0;
+
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+
+                .text{
+                    width: 100%;
+                    height: max-content;
+                    padding: 8%;
+                    font-size: .75rem;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    </div>
+
+    <script>(async() => {
+        // 格式轉換
+        const dataFormatconvert = (data) => {
+            let newData = [];
+            let keyNames = data[0];
+            data.shift();
+
+            data.forEach((item, index) => {
+                let obj = {};
+                keyNames.forEach((key, index) => {
+                    obj[key] = item[index];
+                });
+                newData.push(obj);
+            });
+
+            return newData;
+        }
+
+        // 取得 Google Sheets API 的資料
+        const getGoogleSheetsData = async(apiKey, sheetId, range) => {
+            let API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+            let response = await fetch(API_URL);
+            let data = await response.json();
+            return data.values;
+        }
+
+        /**
+         * 取得 Google Sheets API 的 API Key
+         * 
+         * 取得 Google Sheets 的 Sheet ID
+         * docs.google.com/spreadsheets/d/{ 1o2Qm61Jj7cHXYD4jQhBQQ1ZszND-zzC9P8jUbXbXNxM }/edit?usp=sharing
+        */
+        let apiKey = 'AIzaSyD1ucjFxh-Ta5AZvXX4HK_FUjmXCDeoHsQ';
+        let sheetId = '1o2Qm61Jj7cHXYD4jQhBQQ1ZszND-zzC9P8jUbXbXNxM';
+        let data = await getGoogleSheetsData(apiKey, sheetId, '工作表1');
+        console.log(data);
+
+        data = dataFormatconvert(data);
+        console.table(data);
+
+        const container = document.querySelector('.container');
+
+        data.forEach((item) => {
+            let itemHTML = /*html*/`
+                <div class="item">
+                    <img src="${item['封面圖']}" alt="">
+                    <div class="info">
+                        <div class="name_age"><span>${item['名稱']}</span><span>${item['年齡']}</span></div>
+                        <div class="text">${item['自我介紹']}</div>
+                    </div>
+                </div> 
+            `;
+
+            container.insertAdjacentHTML('beforeend', itemHTML);
+        });
+    })();</script>
+</body>
+</html>
