@@ -1,0 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: max-content;
+  height: max-content;
+  position: relative;
+}
+
+.list {
+  width: clamp(300px, 50vw, 450px);
+  height: 80vh;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  padding: 20px;
+  gap: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+}
+.list .item {
+  width: 100%;
+  height: 15%;
+  background-color: #00aeff;
+  border-radius: 7.5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), inset 2px 2px 3px white;
+  flex-shrink: 0;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+}
+.mask::before, .mask::after {
+  content: "";
+  width: 100%;
+  height: 10%;
+  background-color: unset;
+  border-radius: 12.5px;
+  pointer-events: none;
+  display: block;
+  position: absolute;
+}
+.mask[top-mask]::before {
+  background: linear-gradient(180deg, #242424, rgba(255, 255, 255, 0));
+  top: 0;
+}
+.mask[bottom-mask]::after {
+  background: linear-gradient(0deg, #242424, rgba(255, 255, 255, 0));
+  bottom: 0;
+}
+
+.list::-webkit-scrollbar {
+  width: 0;
+}
