@@ -1,0 +1,91 @@
+@mixin flex-center($mode: 1){
+    display: flex;
+    align-items: center;
+
+    @if $mode == 1{
+        justify-content: center;
+    }@else if $mode == 2{
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(240, 240, 240);
+
+    @include flex-center(1);
+}
+
+.container{
+    @include flex-center(2);
+
+    gap: 10px;
+
+    #btn1{
+        padding: 5px 13px;
+        background-color: rgb(0, 102, 218);
+        cursor: pointer;
+
+        border-radius: 5px;
+        margin-right: auto;
+        @include flex-center();
+        color: rgb(255, 255, 255);
+    }
+    #btn1:hover{
+        animation: A1 1s ease-in-out infinite ;
+    }
+    #btn1:has(+ #switch1:not(:checked))::before{
+        content: "隱藏";
+    }
+    #btn1:has(+ #switch1:checked)::before{
+        content: "展開";
+    }
+
+    #switch1{display: none;}
+
+    #text_box1{
+        width: clamp(200px, 50vw, 500px);
+        height: auto;
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+        overflow: hidden;
+
+        padding: 10px;
+
+        display: grid;
+        grid-template-rows: 1fr;
+
+        transition: all 0.3s ease-in-out;
+
+        span{
+            overflow: hidden;
+        }
+    }
+
+    #switch1:checked + #text_box1{
+        padding: 0px;
+        grid-template-rows: 0fr;
+    }
+}
+
+@keyframes A1{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.9);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
