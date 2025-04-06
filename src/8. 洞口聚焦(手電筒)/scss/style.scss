@@ -22,18 +22,3 @@ body{
 
     @include flex-center(1);
 }
-
-.focus-mask{
-    --offset-x: 0px;
-    --offset-y: 0px;
-
-    width: 200px;
-    aspect-ratio: 1 / 1;
-    background-color: rgb(0, 255, 234);
-
-    position: fixed;
-        top: 0;
-        left: 0;
-    
-    transform: translate(calc(var(--offset-x) - 50%), calc(var(--offset-y) - 50%));
-}

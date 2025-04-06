@@ -1,0 +1,30 @@
+.focus-mask-nPMz57{
+    --offset-x: 50vw;
+    --offset-y: 50vh;
+
+    width: 200vw;
+    height: 200vh;
+    background: radial-gradient(circle, 
+        rgba(0, 0, 0, 0) 1%,
+        rgba(0, 0, 0, .5) 5%,
+        rgba(0, 0, 0, .99) 10%
+    );
+    /* background: radial-gradient(circle, 
+        rgba(0, 0, 0, 0) 5%,
+        rgba(0, 0, 0, .5) 15%,
+        rgba(0, 0, 0, .8) 25%,
+        rgba(0, 0, 0, 0) 25%
+    ); */
+
+    pointer-events: none;
+
+    position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+
+    transform: translate(calc(var(--offset-x) - 50%), calc(var(--offset-y) - 50%));
+}
+.focus-mask-nPMz57.hid{
+    display: none;
+}
