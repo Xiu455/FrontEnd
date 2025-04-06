@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focus-mask {
+  --offset-x: 0px;
+  --offset-y: 0px;
+  width: 200px;
+  aspect-ratio: 1/1;
+  background-color: #00ffea;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(calc(var(--offset-x) - 50%), calc(var(--offset-y) - 50%));
+}
