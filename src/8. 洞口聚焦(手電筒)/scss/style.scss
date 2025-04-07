@@ -22,3 +22,9 @@ body{
 
     @include flex-center(1);
 }
+
+.random-img{
+    width: auto;
+    height: 80vh;
+    object-fit: cover;
+}
