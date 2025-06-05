@@ -15,7 +15,7 @@
         const focus = e.querySelector('.focus');
         const num = e.querySelectorAll('.num')[i];
 
-        focus.classList.remove('focus');            // 移除 focus 狀態
+        focus?.classList.remove('focus');            // 移除 focus 狀態
         numList.style.setProperty('--offset', i);   // 設置 numList 的 --offset 屬性
 
         await delay(200);
