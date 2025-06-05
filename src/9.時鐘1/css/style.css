@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e6e6e6 30%, #333333);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#clock-box1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+}
+
+.window {
+  width: 4em;
+  aspect-ratio: 1/1;
+  overflow: visible;
+  position: relative;
+}
+.window .num-list {
+  width: 100%;
+  height: max-content;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 1em;
+  box-shadow: 0.5em 0.5em 0.6em 0.2em rgba(0, 0, 0, 0.5), -0.4em -0.5em 0.6em 0.2em rgba(255, 255, 255, 0.85);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  transform: translateY(calc((var(--offset) / var(--item)) * -100%));
+  transition: transform 0.6s ease-in-out;
+}
+.window .num-list .num {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
+  transition: all 0.3s ease-in-out;
+}
+.window .num-list .num.focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0.3em 0.3em 0.6em 0.1em rgba(0, 0, 0, 0.7), -0.1em -0.1em 0.3em 0.1em white;
+  font-weight: 900;
+  transform: scale(1.3);
+}
+
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 7px;
+  }
+}

@@ -19,6 +19,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  background-color: #ffb411;
   gap: 10px;
 }
 .container #btn1 {
@@ -57,6 +58,12 @@ body {
   transition: all 0.3s ease-in-out;
 }
 .container #text_box1 span {
+  overflow: hidden;
+}
+.container #text_box1 div {
+  width: 50px;
+  aspect-ratio: 1/1;
+  background-color: #4ef6fc;
   overflow: hidden;
 }
 .container #switch1:checked + #text_box1 {
