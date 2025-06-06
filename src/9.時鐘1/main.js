@@ -12,11 +12,12 @@
     // 更新時間數字
     const updateTime = async (e, i) => {
         const numList = e.querySelector('.num-list');
-        const focus = e.querySelector('.focus');
+        const focus = e.querySelectorAll('.focus');
         const num = e.querySelectorAll('.num')[i];
-
-        focus?.classList.remove('focus');            // 移除 focus 狀態
-        numList.style.setProperty('--offset', i);   // 設置 numList 的 --offset 屬性
+        
+        // 移動 focus 狀態
+        focus?.forEach(f => f.classList.remove('focus'));
+        numList.style.setProperty('--offset', i);   // 將移動到 i 數字的位置
 
         await delay(200);
         
