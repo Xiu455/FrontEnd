@@ -9,7 +9,7 @@
     // 延遲函式
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-    // 更新時間數字
+    // 更新顯示數字
     const updateTime = async (e, i) => {
         const numList = e.querySelector('.num-list');
         const focus = e.querySelectorAll('.focus');

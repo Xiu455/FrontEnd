@@ -41,7 +41,6 @@ body{
 .window{
     width: 4em;
     aspect-ratio: 1 / 1;
-    // background-color: aqua;
 
     overflow: visible;
 
@@ -92,8 +91,6 @@ body{
         }
     }
 }
-
-
 
 @media screen and (max-width: 768px) {
     *{
