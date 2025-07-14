@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar {
+  width: fit-content;
+  min-width: 10px;
+  min-height: 95vh;
+  background-color: black;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+}
+.sidebar .sw-point-label {
+  width: 30px;
+  aspect-ratio: 1/1;
+  background-color: #ff9d1e;
+  cursor: pointer;
+  border-radius: 99999px;
+  position: absolute;
+  top: 30px;
+  right: -100px;
+}
+.sidebar .sidebar-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar .sidebar-item .icon {
+  height: 30px;
+  aspect-ratio: 1/1;
+  background-color: #444444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar .sidebar-item .text {
+  height: max-content;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.sidebar .sidebar-item .text > * {
+  overflow: hidden;
+}
+.sidebar .sidebar-item .text span {
+  min-width: 100px;
+  padding-left: 2ch;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.3s ease-in-out;
+}
+
+#sw-point1 {
+  display: none;
+}
+
+#sw-point1:checked + .sidebar .sidebar-item .text,
+.sidebar.shr .sidebar-item .text {
+  grid-template-columns: 0fr;
+}
+#sw-point1:checked + .sidebar .sidebar-item .text span,
+.sidebar.shr .sidebar-item .text span {
+  min-width: 0;
+  padding: 0;
+}

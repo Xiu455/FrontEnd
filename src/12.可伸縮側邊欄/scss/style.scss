@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+@mixin flex-center($mode: 1){
+    display: flex;
+    align-items: center;
+
+    @if $mode == 1{
+        justify-content: center;
+    }@else if $mode == 2{
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    color: rgb(255, 255, 255);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background-color: hsl(0, 0%, 10%);
+
+    @include flex-center();
+}
+
+.sidebar{
+    width: fit-content; min-width: 10px;
+    min-height: 95vh;
+    background-color: hsl(0, 0%, 0%);
+
+    border-radius: 10px;
+
+    margin-left: 10px;
+    margin-right: auto;
+
+    @include flex-center(2);
+
+    position: relative;
+
+    .sw-point-label{
+        width: 30px;
+        aspect-ratio: 1 / 1;
+        background-color: rgb(255, 157, 30);
+        cursor: pointer;
+
+        border-radius: 99999px;
+
+        position: absolute;
+            top: 30px;
+            right: -100px;
+    }
+
+    .sidebar-item{
+        padding: 10px;
+
+        @include flex-center();
+
+        .icon{
+            height: 30px;
+            aspect-ratio: 1 / 1;
+            background-color: rgb(68, 68, 68);
+            @include flex-center();
+        }
+
+        .text{
+            height: max-content;
+
+            display: grid;
+            grid-template-columns: 1fr;
+
+            justify-content: flex-start;
+
+            overflow: hidden;
+
+            transition: all 0.3s ease-in-out;
+
+            &>*{
+                overflow: hidden;
+            }
+
+            span{
+                min-width: 100px;
+
+                padding-left: 2ch;
+
+                display: flex;
+                flex-shrink: 0;
+
+                font-size: 18px;
+                font-weight: 600;
+                white-space: nowrap;
+
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+}
+
+#sw-point1{
+    display: none;
+}
+
+#sw-point1:checked+.sidebar,
+.sidebar.shr{
+    .sidebar-item{
+        .text{
+            grid-template-columns: 0fr;
+            span{
+                min-width: 0;
+                padding: 0;
+            }
+        }
+    }
+}
