@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  --p: .21em;
+  --br: 1em;
+  font-size: 80px;
+  height: 3.2em;
+  aspect-ratio: 2.8/1;
+  background: linear-gradient(90deg, #222222, #010101);
+  border-radius: var(--br);
+  padding: var(--p);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn .icon {
+  height: 100%;
+  aspect-ratio: 1/1;
+  background-color: #ff2030;
+  border-radius: calc(var(--br) - var(--p));
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.5), inset 0 -2px 2px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn .icon .block-box {
+  --spacing: .15em;
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn .icon .block-box .block-row {
+  width: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: var(--spacing);
+}
+.btn .icon .block-box .block-row .block {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.btn .icon .block-box .block-row .on {
+  background-color: white;
+}
+.btn .icon .block-box .block-row:nth-child(1),
+.btn .icon .block-box .block-row:nth-child(2),
+.btn .icon .block-box .block-row:nth-child(3),
+.btn .icon .block-box .block-row:nth-child(4) {
+  margin-right: var(--spacing);
+}
+.btn .icon .block-box .block-row:nth-child(6),
+.btn .icon .block-box .block-row:nth-child(7) {
+  display: none;
+}
+.btn .text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn .text span {
+  font-weight: 400;
+  translate: 0 -5%;
+}

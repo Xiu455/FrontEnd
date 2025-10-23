@@ -65,6 +65,7 @@ body {
 }
 .sidebar .sidebar-item .text > * {
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 .sidebar .sidebar-item .text span {
   min-width: 100px;
@@ -74,7 +75,6 @@ body {
   font-size: 18px;
   font-weight: 600;
   white-space: nowrap;
-  transition: all 0.3s ease-in-out;
 }
 
 #sw-point1 {

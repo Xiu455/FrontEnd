@@ -83,6 +83,7 @@ body{
 
             &>*{
                 overflow: hidden;
+                transition: all 0.3s ease-in-out;
             }
 
             span{
@@ -96,8 +97,6 @@ body{
                 font-size: 18px;
                 font-weight: 600;
                 white-space: nowrap;
-
-                transition: all 0.3s ease-in-out;
             }
         }
     }
