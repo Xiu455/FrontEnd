@@ -22,6 +22,7 @@ body {
   height: 3.2em;
   aspect-ratio: 2.8/1;
   background: linear-gradient(90deg, #222222, #010101);
+  cursor: pointer;
   border-radius: var(--br);
   padding: var(--p);
   color: white;
@@ -80,6 +81,7 @@ body {
   justify-content: center;
 }
 .btn .text span {
-  font-weight: 400;
+  user-select: none;
   translate: 0 -5%;
+  font-weight: 400;
 }

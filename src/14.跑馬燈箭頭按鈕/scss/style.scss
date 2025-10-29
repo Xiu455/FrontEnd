@@ -37,6 +37,7 @@ body{
     height: 3.2em;
     aspect-ratio: 2.8 / 1;
     background: linear-gradient(90deg, rgb(34, 34, 34), rgb(1, 1, 1));
+    cursor: pointer;
 
     border-radius: var(--br);
 
@@ -108,9 +109,9 @@ body{
         @include flex-center();
 
         span{
-            font-weight: 400;
-
+            user-select: none;
             translate: 0 -5%;
+            font-weight: 400;
         }
     }
 }
