@@ -37,7 +37,7 @@ body{
 .loader{
     width: 100px;
     aspect-ratio: 1 / 1;
-    // background-color: $loading-c;
+    background-color: $loading-c;
     @include flex-center();
 
     position: relative;
