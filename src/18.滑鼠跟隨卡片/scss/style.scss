@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+@mixin flex-center($mode: 1){
+    display: flex;
+    align-items: center;
+
+    @if $mode == 1{
+        justify-content: center;
+    }@else if $mode == 2{
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background-color: hsl(0, 0%, 98%);
+
+    @include flex-center(1);
+}
+
+.card{
+    width: 300px;
+    aspect-ratio: 3 / 4;
+    @include flex-center();
+    position: relative;
+
+    perspective: 1000px;
+}
+
+.sensors{
+    --p: 60px;
+    width: calc(100% + var(--p)); height: calc(100% + var(--p));
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    position: absolute;
+        z-index: 2;
+
+    // .s-item:hover{
+    //     background-color: hsl(0, 0%, 80%, .5);
+    // }
+}
+
+.content{
+    width: 100%; height: 100%;
+    background-color: rgb(255, 255, 255);
+
+    border: .5rem solid hsl(0, 0%, 100%);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+    overflow: hidden;
+
+    @include flex-center();
+
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease;
+
+    img{
+        width: 100%; height: 100%;
+        object-fit: cover;
+    }
+}
+
+.sensors:has(.s-item:nth-child(1):hover) + .content{
+    transform: rotateX(15deg) rotateY(-15deg);
+}
+
+.sensors:has(.s-item:nth-child(2):hover) + .content{
+    transform: rotateX(15deg) rotateY(0deg);
+}
+
+.sensors:has(.s-item:nth-child(3):hover) + .content{
+    transform: rotateX(15deg) rotateY(15deg);
+}
+
+.sensors:has(.s-item:nth-child(4):hover) + .content{
+    transform: rotateX(0deg) rotateY(-15deg);
+}
+
+.sensors:has(.s-item:nth-child(5):hover) + .content{
+    transform: rotateX(0deg) rotateY(0deg);
+}
+
+.sensors:has(.s-item:nth-child(6):hover) + .content{
+    transform: rotateX(0deg) rotateY(15deg);
+}
+
+.sensors:has(.s-item:nth-child(7):hover) + .content{
+    transform: rotateX(-15deg) rotateY(-15deg);
+}
+
+.sensors:has(.s-item:nth-child(8):hover) + .content{
+    transform: rotateX(-15deg) rotateY(0deg);
+}
+
+.sensors:has(.s-item:nth-child(9):hover) + .content{
+    transform: rotateX(-15deg) rotateY(15deg);
+}
