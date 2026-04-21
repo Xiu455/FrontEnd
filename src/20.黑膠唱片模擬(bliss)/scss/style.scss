@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+@mixin flex-center($mode: 1){
+    display: flex;
+    align-items: center;
+
+    @if $mode == 1{
+        justify-content: center;
+    }@else if $mode == 2{
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+
+    @include flex-center(1);
+}
+
+.vinyl-record-box{
+    --box-bg-c: hsl(0, 0%, 100%);
+
+    width: 300px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--box-bg-c);
+
+    @include flex-center();
+
+    position: relative;
+
+    transform: translateX(-25%);
+
+    .cover-box{
+        width: 100%;
+        height: 100%;
+        background-color: inherit;
+
+        box-shadow: 0 0 10px 3px hsl(0, 0%, 0%, .5);
+    
+        @include flex-center();
+
+        .cover{
+            width: 95%;
+            aspect-ratio: 1 / 1;
+    
+            display: flex;
+    
+            position: relative;
+    
+            &::after{
+                content: "";
+                width: 100%; height: 100%;
+                box-shadow: inset 0 0 5px 3px var(--box-bg-c);
+                position: absolute;
+            }
+    
+            img{
+                width: 100%; height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .vinyl-record{
+        --record-c: rgb(0, 0, 0);
+        --Reflective-c: hsl(0, 0%, 70%);
+
+        height: 96%;
+        aspect-ratio: 1 / 1;
+        background-image: conic-gradient( 
+            var(--record-c)        0deg    100deg
+            , var(--Reflective-c)
+            , var(--record-c)      180deg  280deg
+            , var(--Reflective-c)
+            , var(--record-c)
+        );
+
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 50%;
+        box-shadow: 0 0 10px 3px hsl(0, 0%, 0%, .5);
+
+        @include flex-center();
+
+        position: absolute;
+            left: 53%;
+            z-index: -1;
+
+        & > div{
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .ch1{
+            width: 50%;
+            background-color: var(--record-c);
+        }
+
+        .ch2{
+            width: 40%;
+            background-color: hsl(0, 0%, 20%);
+            box-shadow: inset 0 0 5px 2px hsl(0, 0%, 100%, .2);
+        }
+
+        .ch3{
+            width: 35%;
+            border: 2px solid hsl(0, 0%, 80%);
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        .ch4{
+            width: 30%;
+            background-color: hsl(0, 0%, 100%);
+        }
+
+        .ch5{
+            width: 5px;
+            background-color: rgb(0, 0, 0);
+        }
+    }
+}
+
+.vinyl-record-box.play{
+    .vinyl-record{
+        animation: 10s infinite linear spin;
+    }
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

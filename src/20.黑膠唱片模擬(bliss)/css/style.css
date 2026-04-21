@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vinyl-record-box {
+  --box-bg-c: hsl(0, 0%, 100%);
+  width: 300px;
+  aspect-ratio: 1/1;
+  background-color: var(--box-bg-c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform: translateX(-25%);
+}
+.vinyl-record-box .cover-box {
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vinyl-record-box .cover-box .cover {
+  width: 95%;
+  aspect-ratio: 1/1;
+  display: flex;
+  position: relative;
+}
+.vinyl-record-box .cover-box .cover::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 5px 3px var(--box-bg-c);
+  position: absolute;
+}
+.vinyl-record-box .cover-box .cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.vinyl-record-box .vinyl-record {
+  --record-c: rgb(0, 0, 0);
+  --Reflective-c: hsl(0, 0%, 70%);
+  height: 96%;
+  aspect-ratio: 1/1;
+  background-image: conic-gradient(var(--record-c) 0deg 100deg, var(--Reflective-c), var(--record-c) 180deg 280deg, var(--Reflective-c), var(--record-c));
+  border: 2px solid black;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 53%;
+  z-index: -1;
+}
+.vinyl-record-box .vinyl-record > div {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  position: absolute;
+}
+.vinyl-record-box .vinyl-record .ch1 {
+  width: 50%;
+  background-color: var(--record-c);
+}
+.vinyl-record-box .vinyl-record .ch2 {
+  width: 40%;
+  background-color: #333333;
+  box-shadow: inset 0 0 5px 2px rgba(255, 255, 255, 0.2);
+}
+.vinyl-record-box .vinyl-record .ch3 {
+  width: 35%;
+  border: 2px solid #cccccc;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+.vinyl-record-box .vinyl-record .ch4 {
+  width: 30%;
+  background-color: white;
+}
+.vinyl-record-box .vinyl-record .ch5 {
+  width: 5px;
+  background-color: black;
+}
+
+.vinyl-record-box.play .vinyl-record {
+  animation: 10s infinite linear spin;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
