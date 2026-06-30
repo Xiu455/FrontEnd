@@ -76,19 +76,19 @@ body{
     .face-1{
         // background-color: hsl(0, 100%, 60%);
         background-image: var(--bg-url-1);
-        transform: rotateX(calc(0deg + var(--deg))) translateZ($depth);
+        transform: rotateX(calc(0deg - var(--deg))) translateZ($depth);
     }
 
     .face-2{
         // background-color: hsl(120, 100%, 60%);
         background-image: var(--bg-url-2);
-        transform: rotateX(calc(120deg + var(--deg))) translateZ($depth);
+        transform: rotateX(calc(120deg - var(--deg))) translateZ($depth);
     }
 
     .face-3{
         // background-color: hsl(240, 100%, 60%);
         background-image: var(--bg-url-3);
-        transform: rotateX(calc(240deg + var(--deg))) translateZ($depth);
+        transform: rotateX(calc(240deg - var(--deg))) translateZ($depth);
     }
 }
 
