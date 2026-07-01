@@ -31,13 +31,17 @@ body{
 }
 
 .kanban{
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+    --rotateZ: 0deg;
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
 
     transform: 
-        rotateX(10deg)
-        rotateY(-30deg)
+        rotateX(var(--rotateX))
+        rotateY(var(--rotateY))
         rotateZ(0deg)
     ;
     transform-style: preserve-3d;
@@ -60,7 +64,7 @@ body{
         background-repeat: no-repeat;
         background-size: 200% auto;
 
-        outline: 3px solid #000;
+        // box-shadow: inset 0 0 1px 1px #000;
 
         position: absolute;
             top: 50%;
@@ -76,20 +80,30 @@ body{
     .face-1{
         // background-color: hsl(0, 100%, 60%);
         background-image: var(--bg-url-1);
-        transform: rotateX(calc(0deg - var(--deg))) translateZ($depth);
+        transform: rotateX(calc(0deg - var(--face-deg))) translateZ($depth);
     }
 
     .face-2{
         // background-color: hsl(120, 100%, 60%);
         background-image: var(--bg-url-2);
-        transform: rotateX(calc(120deg - var(--deg))) translateZ($depth);
+        transform: rotateX(calc(120deg - var(--face-deg))) translateZ($depth);
     }
 
     .face-3{
         // background-color: hsl(240, 100%, 60%);
         background-image: var(--bg-url-3);
-        transform: rotateX(calc(240deg - var(--deg))) translateZ($depth);
+        transform: rotateX(calc(240deg - var(--face-deg))) translateZ($depth);
     }
+
+    // .kanban-top{
+    //     width: 100%;
+    //     height: 100%;
+    //     background-color: hsl(0, 0%, 0%);
+
+    //     transform: rotateX(90deg) translateZ(calc(#{$size} / 2)) translateY(calc(#{$depth}));
+
+    //     transform-origin: 0;
+    // }
 }
 
 #box-1{

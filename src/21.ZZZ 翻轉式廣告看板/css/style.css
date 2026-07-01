@@ -16,10 +16,13 @@ body {
 }
 
 .kanban {
+  --rotateX: 0deg;
+  --rotateY: 0deg;
+  --rotateZ: 0deg;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  transform: rotateX(10deg) rotateY(-30deg) rotateZ(0deg);
+  transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) rotateZ(0deg);
   transform-style: preserve-3d;
 }
 
@@ -38,7 +41,6 @@ body {
   aspect-ratio: 1/1;
   background-repeat: no-repeat;
   background-size: 200% auto;
-  outline: 3px solid #000;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,15 +49,15 @@ body {
 }
 .kanban-box .face-1 {
   background-image: var(--bg-url-1);
-  transform: rotateX(calc(0deg - var(--deg))) translateZ(calc(200px * sqrt(3) / 6));
+  transform: rotateX(calc(0deg - var(--face-deg))) translateZ(calc(200px * sqrt(3) / 6));
 }
 .kanban-box .face-2 {
   background-image: var(--bg-url-2);
-  transform: rotateX(calc(120deg - var(--deg))) translateZ(calc(200px * sqrt(3) / 6));
+  transform: rotateX(calc(120deg - var(--face-deg))) translateZ(calc(200px * sqrt(3) / 6));
 }
 .kanban-box .face-3 {
   background-image: var(--bg-url-3);
-  transform: rotateX(calc(240deg - var(--deg))) translateZ(calc(200px * sqrt(3) / 6));
+  transform: rotateX(calc(240deg - var(--face-deg))) translateZ(calc(200px * sqrt(3) / 6));
 }
 
 #box-1 .face-1, #box-1 .face-2, #box-1 .face-3 {
