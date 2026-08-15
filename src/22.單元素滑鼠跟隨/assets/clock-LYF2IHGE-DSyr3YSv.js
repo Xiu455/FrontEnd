@@ -1,0 +1,1 @@
+var e={key:`clock`,scope:`global`,start(e){let t=0,n=()=>{let r=new Date;e.write(`now`,Math.floor(r.getTime()/1e3)),e.write(`hours`,r.getHours()),e.write(`minutes`,r.getMinutes()),e.write(`seconds`,r.getSeconds()),t=setTimeout(n,1e3-Date.now()%1e3)};return n(),()=>clearTimeout(t)}};export{e as clock};

@@ -24,6 +24,7 @@ export default defineConfig(async ({ command, mode }) => {
     },
     build: {
       outDir: resolve('../'),
+      cssCodeSplit: false,
     },
   }
 });

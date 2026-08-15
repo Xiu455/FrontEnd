@@ -1,0 +1,1 @@
+var e=`input:not([type=hidden]):not([type=submit]):not([type=button]):not([type=reset]):not([type=image]), textarea, select`,t=t=>t.matches(e)?[t]:Array.from(t.querySelectorAll(e));export{t};

@@ -1,0 +1,51 @@
+@use '@styles/index' as *;
+
+.card-box{
+    gap: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.card{
+    --x: calc(var(--live-local-pointer-x-ratio, 0) * 100%);
+    --y: calc(var(--live-local-pointer-y-ratio, 0) * 100%);
+
+    width: clamp(100px, 20vmin, 200px);
+    aspect-ratio: 1;
+    background-color: hsl(0, 0%, 20%);
+
+    overflow: hidden;
+
+    border-radius: 1rem;
+
+    position: relative;
+    
+    &::before{
+        --limit: 10%;
+
+        content: '';
+        width: 50%;
+
+        background: radial-gradient(circle,
+            hsl(274, 100%, 62%),
+            hsla(0, 0%, 0%, 0.1)
+        );
+
+        filter: blur(30px);
+
+        aspect-ratio: 1;
+
+        border-radius: 50%;
+
+        position: absolute;
+            // left: clamp(var(--limit), var(--x), calc(100% - var(--limit)));
+            // top: clamp(var(--limit), var(--y), calc(100% - var(--limit)));
+            left: var(--x);
+            top: var(--y);
+        
+
+        transform: translate(-50%, -50%);
+    }
+}

@@ -1,0 +1,1 @@
+import{s as e}from"./index-BIj0I0kF.js";var t={key:`nav-type`,scope:`global`,props:{"nav-type":{syntax:`<custom-ident>`,initial:`navigate`}},start(t){let n=performance.getEntriesByType(`navigation`)[0];return t.write(`nav-type`,n?.type??`navigate`,`const`),e}};export{t as navType};
