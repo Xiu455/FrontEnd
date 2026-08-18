@@ -1,1 +1,0 @@
-import{o as e}from"./index-BIj0I0kF.js";var t=250,n={key:`fps`,scope:`global`,start(n){let r=performance.now(),i=r,a=60;return n.write(`fps`,Math.round(a)),e(e=>{let o=e-r;r=e,!(o<=0)&&(a+=(1e3/o-a)*.1,!(e-i<t)&&(i=e,n.write(`fps`,Math.round(a))))})}};export{n as fps};

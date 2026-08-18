@@ -1,1 +1,0 @@
-import{n as e}from"./index-BIj0I0kF.js";var t={key:`page-focused`,scope:`global`,start(t){let n=()=>t.write(`page-focused`,+!!document.hasFocus());n();let r=e(`focus`,n),i=e(`blur`,n);return()=>{r(),i()}}};export{t as pageFocused};

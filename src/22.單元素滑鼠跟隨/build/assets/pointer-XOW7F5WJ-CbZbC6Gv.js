@@ -1,1 +1,0 @@
-import{a as e,n as t}from"./index-BIj0I0kF.js";var n={key:`pointer`,scope:`global`,start(n){return t(`pointermove`,t=>{let r=t;n.write(`pointer-x`,r.clientX),n.write(`pointer-y`,r.clientY),n.write(`pointer-x-ratio`,e(r.clientX/window.innerWidth)),n.write(`pointer-y-ratio`,e(r.clientY/window.innerHeight))})}};export{n as pointer};

@@ -1,0 +1,1 @@
+import{r as e}from"./index-k23enAWS.js";var t={key:`page-visible`,scope:`global`,start(t){let n=()=>t.write(`page-visible`,+(document.visibilityState===`visible`));return n(),e(`visibilitychange`,n)}};export{t as pageVisible};

@@ -1,5 +1,14 @@
 @use '@styles/index' as *;
 
+$card-bg-color: hsl(0, 0%, 20%);
+
+#root{
+    gap: 5rem;
+
+    flex-wrap: wrap;
+    align-content: center;
+}
+
 .card-box{
     gap: 1rem;
 
@@ -8,19 +17,21 @@
     grid-template-rows: repeat(2, 1fr);
 }
 
-.card{
+ .card{
     --x: calc(var(--live-local-pointer-x-ratio, 0) * 100%);
     --y: calc(var(--live-local-pointer-y-ratio, 0) * 100%);
 
     width: clamp(100px, 20vmin, 200px);
     aspect-ratio: 1;
-    background-color: hsl(0, 0%, 20%);
-
-    overflow: hidden;
+    background-color: $card-bg-color;
 
     border-radius: 1rem;
 
     position: relative;
+}
+
+body:hover .card-box.use-before .card{
+    overflow: hidden;
     
     &::before{
         --limit: 10%;
@@ -48,4 +59,22 @@
 
         transform: translate(-50%, -50%);
     }
+}
+
+.use-bg .card{
+    padding: 2px;
+
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+}
+
+body:hover .use-bg .card{
+    background-image: radial-gradient(
+        circle at var(--x) var(--y),
+        hsl(274, 100%, 62%),
+        $card-bg-color 50%
+    );
 }
