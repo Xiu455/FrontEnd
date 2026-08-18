@@ -23,8 +23,9 @@ export default defineConfig(async ({ command, mode }) => {
       tsconfigPaths: true,
     },
     build: {
-      outDir: resolve('../'),
+      outDir: resolve('../build'),
       cssCodeSplit: false,
+      emptyOutDir: true,  // 建置前清空輸出目錄
     },
   }
 });
