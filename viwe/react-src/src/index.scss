@@ -28,6 +28,25 @@ body{
     background-color: var(--body-bg-color);
 
     display: flex;
+
+    position: fixed;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+::-webkit-scrollbar{
+    width: 2px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: hsla(0, 0%, 30%);
+    cursor: pointer;
+
+    border-radius: 100dvw;
 }
 
 #root{
