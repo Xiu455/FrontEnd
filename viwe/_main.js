@@ -1,3 +1,5 @@
+const test = 123;
+
 const extractNumber = (name) => {
     const match = name.match(/^(\d+)\./);
     return match ? Number(match[1]) : Infinity;
