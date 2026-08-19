@@ -8,7 +8,7 @@ export default function App(){
 
   return (<>
     <div id="center">
-    
+      AAA-123
     </div>
   </>)
 }
