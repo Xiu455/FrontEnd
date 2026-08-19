@@ -27,7 +27,14 @@ body{
 
     background-color: var(--body-bg-color);
 
-    @include flex-center();
+    display: flex;
+}
+
+#root{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
 }
 
 code{

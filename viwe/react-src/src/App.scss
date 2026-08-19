@@ -1,48 +1,8 @@
 @use '@styles/index' as *;
 
-#center{
-    gap: 40px;
+.center{
+    width: 100%;
+    height: 100%;
 
-    @include flex-center(2);
-
-    .hero{
-        width: 170px;
-        aspect-ratio: 1 / 1;
-
-        @include flex-center();
-
-        position: relative;
-
-        img{
-            max-width: 100%; max-height: 100%;
-            object-fit: cover;
-        }
-
-        .framework, .vite{
-            position: absolute;
-        }
-
-        .framework {
-            height: 28px;
-
-            top: 34px;
-            z-index: 1;
-
-            transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-            scale(2);
-        }
-
-        .vite {
-            
-            height: 26px;
-            width: auto;
-
-            
-            z-index: 0;
-            top: 107px;
-
-            transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-            scale(1.5);
-        }
-    }
+    
 }
