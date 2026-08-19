@@ -1,0 +1,1 @@
+import{a as e,s as t}from"./index-CwX1qa70.js";var n={key:`geo`,scope:`global`,start(n){let r=navigator.geolocation;if(!r)return t;let i=!1,a=r.watchPosition(t=>{i||(n.write(`geo-lat`,e(t.coords.latitude)),n.write(`geo-lng`,e(t.coords.longitude)),n.write(`geo-accuracy`,e(t.coords.accuracy)))});return()=>{i=!0,r.clearWatch(a)}}};export{n as geo};
