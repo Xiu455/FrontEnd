@@ -1,1 +1,0 @@
-import{l as e}from"./index-CwX1qa70.js";var t={key:`truncated`,scope:`element`,start(t){let n=t.target,r=()=>{let e=+(n.scrollWidth>n.clientWidth),r=+(n.scrollHeight>n.clientHeight);t.write(`truncated`,e||r?1:0),t.write(`truncated-x`,e),t.write(`truncated-y`,r)};return r(),e(n,r)}};export{t as truncated};

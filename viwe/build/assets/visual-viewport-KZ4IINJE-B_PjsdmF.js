@@ -1,0 +1,1 @@
+import{a as e,s as t,t as n}from"./index-CbsX11nq.js";var r={key:`visual-viewport`,scope:`global`,start(r){let i=window.visualViewport;if(!i)return t;let a=()=>{r.write(`vvp-scale`,e(i.scale)),r.write(`vvp-offset-top`,e(i.offsetTop)),r.write(`vvp-height`,e(i.height))};a();let o=n(`resize`,a),s=n(`scroll`,a);return()=>{o(),s()}}};export{r as visualViewport};

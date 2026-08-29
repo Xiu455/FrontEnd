@@ -1,1 +1,0 @@
-import{a as e,n as t,s as n}from"./index-CwX1qa70.js";var r={key:`motion`,scope:`global`,start(r){return r.write(`accel-x`,0),r.write(`accel-y`,0),r.write(`accel-z`,0),typeof DeviceMotionEvent>`u`?n:t(`devicemotion`,t=>{let n=t.accelerationIncludingGravity;r.write(`accel-x`,e(n?.x??0)),r.write(`accel-y`,e(n?.y??0)),r.write(`accel-z`,e(n?.z??0))})}};export{r as motion};

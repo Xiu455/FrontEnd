@@ -1,0 +1,1 @@
+import{n as e}from"./index-CbsX11nq.js";var t={key:`online`,scope:`global`,start(t){let n=()=>t.write(`online`,+!!navigator.onLine);n();let r=e(`online`,n),i=e(`offline`,n);return()=>{r(),i()}}};export{t as online};

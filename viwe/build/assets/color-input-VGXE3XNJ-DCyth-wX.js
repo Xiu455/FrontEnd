@@ -1,1 +1,0 @@
-import{c as e,i as t,s as n}from"./index-CwX1qa70.js";import{n as r}from"./chunk-A2ETARW3-DjIy60Ly.js";var i={key:`color-input`,scope:`element`,props:{color:r},gate:!1,start(r){let i=e(r.target,`input[type="color"]`);if(!i)return n;let a=()=>r.write(`color`,i.value);return a(),t(i,[`input`,`change`],a)}};export{i as colorInput};
