@@ -14,6 +14,21 @@ const extractNumber = (name) => {
   return match ? Number(match[1]) : Infinity;
 };
 
+const CardCover = (props) => {
+  const {
+    src,
+    ...rest
+  } = props;
+
+  const [imgSrc, setSrc] = useState(src);
+
+  if(!imgSrc) return;
+
+  return <div className="card-cover">
+    <img src={imgSrc} {...rest} onError={() => setSrc(null)}/>
+  </div>
+}
+
 const fetchData = async () => {
   const res = await(await fetch(`https://api.github.com/repos/Xiu455/FrontEnd/contents/src`)).json();
   const dirData = res.sort((a, b) => extractNumber(a.name) - extractNumber(b.name));
@@ -29,6 +44,7 @@ const Card = ({ data }) => {
 
   return <a className='card' data-props-for="pointer-local" href={`${PAGES_ROOT}/${path}`} target="_blank">
     <div className="bg" />
+    <CardCover src={`${PAGES_ROOT}/${path}/cover.png`} />
     <div className='name'><span>{name}</span></div>
   </a>
 }
