@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111822;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opt-bar-box {
+  border-radius: 100vw;
+  box-shadow: 0 0 5px 1px #4d4d4d;
+  margin-top: 8dvh;
+  margin-bottom: auto;
+  padding: 0.3rem;
+  gap: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.1);
+}
+
+.opt-item {
+  height: 2rem;
+  background-color: #666666;
+  cursor: pointer;
+  border-radius: 100vw;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5), inset 0px 1px 1px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.opt-item input[type=radio] {
+  display: none;
+}
+.opt-item .icon-box {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.opt-item .icon-box .icon {
+  width: 80%;
+  aspect-ratio: 1;
+  background-color: #4d4d4d;
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.opt-item .opt-name {
+  display: grid;
+  grid-template-columns: 0fr;
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+  transition: grid-template-columns 0.5s;
+  transition-timing-function: linear(0 0%, 0 2.27%, 0.02 4.53%, 0.04 6.8%, 0.06 9.07%, 0.1 11.33%, 0.14 13.6%, 0.25 18.15%, 0.39 22.7%, 0.56 27.25%, 0.77 31.8%, 1 36.35%, 0.89 40.9%, 0.85 43.18%, 0.81 45.45%, 0.79 47.72%, 0.77 50%, 0.75 52.27%, 0.75 54.55%, 0.75 56.82%, 0.77 59.1%, 0.79 61.38%, 0.81 63.65%, 0.85 65.93%, 0.89 68.2%, 1 72.7%, 0.97 74.98%, 0.95 77.25%, 0.94 79.53%, 0.94 81.8%, 0.94 84.08%, 0.95 86.35%, 0.97 88.63%, 1 90.9%, 0.99 93.18%, 0.98 95.45%, 0.99 97.73%, 1 100%);
+}
+.opt-item .opt-name span {
+  overflow: hidden;
+  transform: translateY(-0.05em);
+  line-height: 1;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.1em;
+  text-shadow: 1px 1px 1px black;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.opt-item input[type=radio]:checked + .opt-name {
+  grid-template-columns: 1fr;
+}
+.opt-item input[type=radio]:not(:checked) + .opt-name {
+  padding: 0;
+}
+.opt-item:has(input[type=radio]:checked) {
+  margin: 0 0.3rem;
+}
