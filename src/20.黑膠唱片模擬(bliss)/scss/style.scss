@@ -31,7 +31,8 @@ body{
 .vinyl-record-box{
     --box-bg-c: hsl(0, 0%, 100%);
 
-    width: 300px;
+    width: 30dvw;
+    min-width: 200px; max-width: 300px;
     aspect-ratio: 1 / 1;
     background-color: var(--box-bg-c);
 
